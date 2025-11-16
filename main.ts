@@ -22,9 +22,9 @@ let 모터_구동_중 = false
 basic.forever(function () {
     if (모터_구동_중 == true) {
         pins.servoWritePin(AnalogPin.P2, 0)
-        basic.pause(200)
+        basic.pause(500)
         pins.servoWritePin(AnalogPin.P2, 180)
-        basic.pause(200)
+        basic.pause(500)
     } else {
         pins.servoWritePin(AnalogPin.P2, 90)
     }
@@ -32,7 +32,7 @@ basic.forever(function () {
 basic.forever(function () {
     if (input.soundLevel() >= 255) {
         모터_구동_중 = 모터_구동_중 == false
-        basic.pause(200)
+        basic.pause(500)
     }
 })
 basic.forever(function () {
