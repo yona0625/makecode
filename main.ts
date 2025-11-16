@@ -45,6 +45,10 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
+    let 현재_음량 = ""
+    serial.writeValue(현재_음량, input.soundLevel())
+})
+basic.forever(function () {
     if (input.lightLevel() == 0) {
         if (현재_빛_세기 == 0) {
             music.play(music.builtinPlayableSoundEffect(soundExpression.yawn), music.PlaybackMode.InBackground)
@@ -52,8 +56,4 @@ basic.forever(function () {
         }
         현재_빛_세기 = 1
     }
-})
-basic.forever(function () {
-    let 현재_음량 = ""
-    serial.writeValue(현재_음량, input.soundLevel())
 })
