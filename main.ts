@@ -18,7 +18,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
 })
 input.onSound(DetectedSound.Loud, function () {
     input.setSoundThreshold(SoundThreshold.Loud, 230)
-    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Nyan), music.PlaybackMode.InBackground)
+    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.JumpUp), music.PlaybackMode.InBackground)
     basic.showIcon(IconNames.Heart)
 })
 input.onGesture(Gesture.Shake, function () {
@@ -64,7 +64,7 @@ basic.forever(function () {
 basic.forever(function () {
     if (input.lightLevel() >= 30) {
         if (현재_빛_세기 == 1) {
-            music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Prelude), music.PlaybackMode.InBackground)
+            music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.InBackground)
             basic.showString("good morning!")
         }
         현재_빛_세기 = 0
