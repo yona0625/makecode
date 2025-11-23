@@ -12,14 +12,26 @@ input.onGesture(Gesture.TiltLeft, function () {
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     모터_구동_중 = 모터_구동_중 == false
-    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.InBackground)
-    basic.showIcon(IconNames.Heart)
+    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Nyan), music.PlaybackMode.InBackground)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
     basic.pause(500)
 })
 input.onSound(DetectedSound.Loud, function () {
     input.setSoundThreshold(SoundThreshold.Loud, 230)
-    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.JumpUp), music.PlaybackMode.InBackground)
-    basic.showIcon(IconNames.Heart)
+    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Nyan), music.PlaybackMode.InBackground)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
 })
 input.onGesture(Gesture.Shake, function () {
     basic.showIcon(IconNames.Sad)
@@ -62,21 +74,21 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-    if (input.lightLevel() >= 30) {
-        if (현재_빛_세기 == 1) {
-            music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.InBackground)
-            basic.showString("good morning!")
-        }
-        현재_빛_세기 = 0
-    }
-})
-basic.forever(function () {
     if (input.lightLevel() == 0) {
         if (현재_빛_세기 == 0) {
             music.play(music.builtinPlayableSoundEffect(soundExpression.yawn), music.PlaybackMode.InBackground)
             basic.showString("good night~")
         }
         현재_빛_세기 = 1
+    }
+})
+basic.forever(function () {
+    if (input.lightLevel() >= 30) {
+        if (현재_빛_세기 == 1) {
+            music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.InBackground)
+            basic.showString("good morning!")
+        }
+        현재_빛_세기 = 0
     }
 })
 basic.forever(function () {
