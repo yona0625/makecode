@@ -1,5 +1,5 @@
 {
-    "name": "빛밝기 테스트(최종 수정-11/23)",
+    "name": "빛밝기 테스트(서보 확장 코드 도입)",
     "description": "",
     "dependencies": {
         "core": "*",
