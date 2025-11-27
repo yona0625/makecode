@@ -24,5 +24,4 @@ input.onGesture(Gesture.ScreenDown, function () {
     music.stopAllSounds()
 })
 let 모터_구동_중 = false
-servos.P2.setRange(0, 360)
 모터_구동_중 = false
