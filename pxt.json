@@ -1,10 +1,11 @@
 {
-    "name": "빛밝기 테스트(수정-11/21)",
+    "name": "빛밝기 테스트(최종 수정-11/23)",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "servo": "*"
     },
     "files": [
         "main.blocks",

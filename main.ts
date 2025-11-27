@@ -12,7 +12,7 @@ input.onGesture(Gesture.TiltLeft, function () {
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     모터_구동_중 = 모터_구동_중 == false
-    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Nyan), music.PlaybackMode.InBackground)
+    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.JumpUp), music.PlaybackMode.InBackground)
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -24,7 +24,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
 })
 input.onSound(DetectedSound.Loud, function () {
     input.setSoundThreshold(SoundThreshold.Loud, 230)
-    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Nyan), music.PlaybackMode.InBackground)
+    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.JumpUp), music.PlaybackMode.InBackground)
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -44,29 +44,18 @@ input.onPinPressed(TouchPin.P1, function () {
 	
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    servos.P2.setRange(0, 360)
     if (모터_구동_중 == true) {
-        pins.servoWritePin(AnalogPin.P2, 0)
-        basic.pause(500)
-        pins.servoWritePin(AnalogPin.P2, 180)
-        basic.pause(500)
+        servos.P2.run(0)
+        모터_구동_중 = false
     } else {
-        pins.servoWritePin(AnalogPin.P2, 90)
+        servos.P2.run(100)
+        모터_구동_중 = true
     }
-    basic.clearScreen()
 })
 let 현재_빛_세기 = 0
 let 모터_구동_중 = false
 모터_구동_중 = false
-basic.forever(function () {
-    if (모터_구동_중 == true) {
-        pins.servoWritePin(AnalogPin.P2, 0)
-        basic.pause(500)
-        pins.servoWritePin(AnalogPin.P2, 180)
-        basic.pause(500)
-    } else {
-        pins.servoWritePin(AnalogPin.P2, 90)
-    }
-})
 basic.forever(function () {
     if (input.soundLevel() >= 230) {
         모터_구동_중 = 모터_구동_중 == false
